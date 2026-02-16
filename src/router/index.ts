@@ -5,12 +5,13 @@ import {
 } from "vue-router";
 import { authGuard, guestGuard } from "./guards";
 import DashboardView from "@/views/dashboard/DashboardView.vue";
+import LoginView from "@/views/auth/LoginView.vue";
 
 const routes: RouteRecordRaw[] = [
   {
     path: "/login",
     name: "Login",
-    component: () => import("@/views/auth/LoginView.vue"),
+    component: () => LoginView,
     beforeEnter: guestGuard,
     meta: { requiresAuth: false, title: "Login" },
   },
