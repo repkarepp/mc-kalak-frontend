@@ -4,14 +4,12 @@ import {
   type RouteRecordRaw,
 } from "vue-router";
 import { authGuard, guestGuard } from "./guards";
-import DashboardView from "@/views/dashboard/DashboardView.vue";
-import LoginView from "@/views/auth/LoginView.vue";
 
 const routes: RouteRecordRaw[] = [
   {
     path: "/login",
     name: "Login",
-    component: () => LoginView,
+    component: () => import("@/views/auth/LoginView.vue"),
     beforeEnter: guestGuard,
     meta: { requiresAuth: false, title: "Login" },
   },
@@ -22,7 +20,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: "/dashboard",
     name: "Dashboard",
-    component: () => DashboardView,
+    component: () => import("@/views/dashboard/DashboardView.vue"),
     beforeEnter: authGuard,
     meta: { requiresAuth: true, title: "Dashboard" },
   },
